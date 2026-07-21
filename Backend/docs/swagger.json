@@ -1,0 +1,2464 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "WeTo Apis",
+    "description": "API for Managing WeTo calls",
+    "contact": {
+      "name": "API Support",
+      "email": "brayan.maca@uao.edu.co"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "User",
+      "description": "User related apis"
+    },
+    {
+      "name": "Anouncements",
+      "description": "Anouncements related apis"
+    },
+    {
+      "name": "Complex",
+      "description": "Complex related apis"
+    },
+    {
+      "name": "PQRS",
+      "description": "PQRS related apis"
+    },
+    {
+      "name": "Notification",
+      "description": "Push notification related apis"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {},
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/directory/getByUser/{userId}": {
+      "get": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Get directories by user ID",
+        "description": "Endpoint to get directories by user ID",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directories retrieved",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/directory/getByComplex/{complexId}": {
+      "get": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Get directories by complex ID",
+        "description": "Endpoint to get directories by complex ID",
+        "parameters": [
+          {
+            "name": "complexId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the complex"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directories retrieved",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/directory/create": {
+      "post": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Create a new directory",
+        "description": "Endpoint to create a new directory",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Directory"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Directory created",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/directory/update/{id}": {
+      "put": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Update an existing directory",
+        "description": "Endpoint to update an existing directory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the directory"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Directory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directory updated",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/directory/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Delete a directory",
+        "description": "Endpoint to delete a directory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the directory"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directory deleted",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/directory/getById/{id}": {
+      "get": {
+        "tags": [
+          "Directory"
+        ],
+        "summary": "Get a directory by ID",
+        "description": "Endpoint to get a directory by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the directory"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directory retrieved",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/add": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add a new user",
+        "description": "Endpoint to add a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idDocument": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "userName": {
+                  "type": "string",
+                  "example": "JohnDoe"
+                },
+                "idComplex": {
+                  "type": "string",
+                  "example": "complexId123"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "example": "user@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "StrongPassword123!"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "+1234567890"
+                },
+                "apartment": {
+                  "type": "string",
+                  "example": "Apt 101"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "ADMIN",
+                    "RESIDENT"
+                  ],
+                  "example": "RESIDENT"
+                }
+              },
+              "required": [
+                "idDocument",
+                "userName",
+                "idComplex",
+                "email",
+                "password",
+                "phone",
+                "apartment",
+                "role"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Authenticate a user",
+        "description": "Endpoint to authenticate a user with email and password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "example": "brayan@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "123456"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/getByComplex/{idComplex}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get users by complex",
+        "description": "get users by id complex in the params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/getById/{idUser}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user by id",
+        "description": "Get user by id",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/update": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update user",
+        "description": "Endpoint to update a user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "uuid de mongo"
+                },
+                "idDocument": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "userName": {
+                  "type": "string",
+                  "example": "JohnDoe"
+                },
+                "idComplex": {
+                  "type": "string",
+                  "example": "complexId123"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "example": "user@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "StrongPassword123!"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "+1234567890"
+                },
+                "apartment": {
+                  "type": "string",
+                  "example": "Apt 101"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "ADMIN",
+                    "RESIDENT"
+                  ],
+                  "example": "RESIDENT"
+                }
+              },
+              "required": [
+                "idDocument",
+                "userName",
+                "idComplex",
+                "email",
+                "password",
+                "phone",
+                "apartment",
+                "role"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/delete/:id": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/user/addPet/{userId}": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add a pet to a user",
+        "description": "Endpoint to add a pet to a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Pet added",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/updatePet/{userId}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update a pet of a user",
+        "description": "Endpoint to update a pet of a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet updated",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/removePet/{userId}/{petId}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Remove a pet from a user",
+        "description": "Endpoint to remove a pet from a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the pet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet removed",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/addVehicle/{userId}": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add a vehicle to a user",
+        "description": "Endpoint to add a vehicle to a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Vehicle added",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/updateVehicle/{userId}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update a vehicle of a user",
+        "description": "Endpoint to update a vehicle of a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle updated",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/user/removeVehicle/{userId}/{vehicleId}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Remove a vehicle from a user",
+        "description": "Endpoint to remove a vehicle from a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "vehicleId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the vehicle"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle removed",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/add": {
+      "post": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Add a new anouncement",
+        "description": "add a new announcement, the field category will be Publicidad if the user is not an admin",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "User": {
+                  "type": "String",
+                  "example": "Admin"
+                },
+                "Title": {
+                  "type": "String",
+                  "example": "Mantenimiento de la piscina"
+                },
+                "Body": {
+                  "type": "String",
+                  "example": "Mantenimiento de la piscina todos los lunes"
+                },
+                "category": {
+                  "type": "String",
+                  "enum": [
+                    "Mantimiento",
+                    "Servicios",
+                    "Reuniones",
+                    "General, Publicidad"
+                  ],
+                  "example": "Mantimiento"
+                }
+              },
+              "required": [
+                "User",
+                "Title",
+                "Body",
+                "category"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/getByComplex/{idComplex}": {
+      "get": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Get anouncements by idComplex",
+        "description": "Get anouncements by complex id in params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/getByUser/{userId}": {
+      "get": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Get anouncements by userId",
+        "description": "Get anouncements by complex id in params",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/getById/{_id}": {
+      "get": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Get anouncement by id",
+        "description": "Get anouncement by id in the params",
+        "parameters": [
+          {
+            "name": "_id Anoun",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/update/{idUser}": {
+      "put": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Update anouncement",
+        "description": "update anouncement",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "String",
+                  "example": "uuid de mongo"
+                },
+                "Title": {
+                  "type": "String",
+                  "example": "Servicio del aseo del hogar"
+                },
+                "Body": {
+                  "type": "String",
+                  "example": "Se hace aseo todos los dias"
+                },
+                "category": {
+                  "type": "String",
+                  "enum": [
+                    "Mantimiento",
+                    "Servicios",
+                    "Reuniones",
+                    "General"
+                  ],
+                  "example": "Servicios"
+                }
+              },
+              "required": [
+                "_id",
+                "Title",
+                "Body",
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/delete/{idAnoun}/{idUser}": {
+      "delete": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Delete anouncement",
+        "description": "detelet anouncement by its id in the params",
+        "parameters": [
+          {
+            "name": "idAnoun",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/search/{keyword}": {
+      "get": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Search anouncements by keyword",
+        "description": "Search anouncements by keyword that can be Title or Body of the anouncement in the params, if the keyword has spaces use %20 to replace them",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "example": "Mantenimiento%20de%20la%20escaleras"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/filterByCategory/{category}": {
+      "get": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Filter anouncements by category",
+        "description": "Filter anouncements by category in the params",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/anouncements/react/{anounId}/{userId}": {
+      "post": {
+        "tags": [
+          "Anouncements"
+        ],
+        "summary": "Add or update a reaction to an announcement",
+        "description": "Endpoint to add or update a reaction to an announcement",
+        "parameters": [
+          {
+            "name": "anounId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the announcement"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reaction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reaction added/updated successfully",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.500"
+            }
+          }
+        }
+      }
+    },
+    "/complex/add": {
+      "post": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Add a new complex",
+        "description": "Required fields: name, address, config",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Colinas del sur"
+                },
+                "admins": {
+                  "type": "array",
+                  "example": [
+                    "admin1",
+                    "admin2"
+                  ]
+                },
+                "residents": {
+                  "type": "array",
+                  "example": [
+                    "resident1",
+                    "resident2"
+                  ]
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Cra 122 # 12-12"
+                },
+                "config": {
+                  "type": "object",
+                  "example": {
+                    "primaryColor": {
+                      "type": "string",
+                      "example": "#000000"
+                    },
+                    "secondaryColor": {
+                      "type": "string",
+                      "example": "#000000"
+                    }
+                  }
+                },
+                "emergencyNumbers": {
+                  "type": "Array",
+                  "example": {
+                    "name": "Policia",
+                    "number": "123"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "address",
+                "config"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/getColors/{idComplex}": {
+      "get": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Get complex colors",
+        "description": "get config complex colors by complex id in the params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/get/{idComplex}": {
+      "get": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Get complex by id",
+        "description": "get complex by its id in the params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/update": {
+      "put": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Update complex",
+        "description": "",
+        "parameters": [
+          {
+            "name": "complex data to update",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "uuid de mongo"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Colinas del sur"
+                },
+                "admins": {
+                  "type": "array",
+                  "example": [
+                    "admin1",
+                    "admin2"
+                  ]
+                },
+                "residents": {
+                  "type": "array",
+                  "example": [
+                    "resident1",
+                    "resident2"
+                  ]
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Cra 122 # 12-12"
+                },
+                "config": {
+                  "type": "object",
+                  "example": {
+                    "primaryColor": {
+                      "type": "string",
+                      "example": "#000000"
+                    },
+                    "secondaryColor": {
+                      "type": "string",
+                      "example": "#000000"
+                    }
+                  }
+                },
+                "emergencyNumbers": {
+                  "type": "Array",
+                  "example": {
+                    "name": "Policia",
+                    "number": "123"
+                  }
+                }
+              },
+              "required": [
+                "_id",
+                "name",
+                "address",
+                "config"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/updateColors": {
+      "put": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Update complex colors",
+        "description": "The colors of the field config will be updated",
+        "parameters": [
+          {
+            "name": "configColors",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "primaryColor": {
+                  "type": "string",
+                  "example": "#FFFFFF"
+                },
+                "secondaryColor": {
+                  "type": "string",
+                  "example": "#000000"
+                }
+              },
+              "required": [
+                "primaryColor",
+                "secondaryColor"
+              ]
+            }
+          },
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/delete/:id": {
+      "delete": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Delete complex",
+        "description": "delete complex by its id in the params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/addZone/{idComplex}": {
+      "post": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Add a new zone",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Zone added",
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/complex/zone/{idComplex}/{idZone}": {
+      "get": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Get a zone by ID",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idZone",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "404": {
+            "description": "Zone not found",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.404"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Update a zone by ID",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idZone",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Zone updated",
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "404": {
+            "description": "Zone not found",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.404"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Delete a zone by ID",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idZone",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Zone deleted",
+            "schema": {
+              "$ref": "#/definitions/Zone"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          },
+          "404": {
+            "description": "Zone not found",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.404"
+            }
+          }
+        }
+      }
+    },
+    "/complex/getAllZones/{idComplex}": {
+      "get": {
+        "tags": [
+          "Complex"
+        ],
+        "summary": "Get all zones for a complex",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Zone"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/add": {
+      "post": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Add a new pqrs",
+        "description": "Add a new pqrs",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "PQRS object that needs to be added",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string",
+                  "example": "UUID-USER"
+                },
+                "case": {
+                  "type": "string",
+                  "example": "Example Case"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "This is an example description for the PQRS entry."
+                },
+                "category": {
+                  "type": "string",
+                  "enum": [
+                    "P",
+                    "Q",
+                    "R",
+                    "S"
+                  ],
+                  "example": "P"
+                }
+              },
+              "required": [
+                "user",
+                "case",
+                "description",
+                "category"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/answer/{idPqrs}": {
+      "put": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Add a new pqrs",
+        "description": "Add a new pqrs",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "PQRS object that needs to be added",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "UUID-USER"
+                },
+                "answer": {
+                  "type": "string",
+                  "example": "Example Answer"
+                }
+              },
+              "required": [
+                "userId",
+                "answer"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/notify/{idUser}": {
+      "put": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Notify ",
+        "description": "Notify when two days have passed without responding to the PQRS",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/notifyOne/{idUser}/{idPqrs": {
+      "put": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Notify ",
+        "description": "Notify when two days have passed without responding to the PQRS",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idPqrs",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/getByUser/{idUser}": {
+      "get": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Get PQRS's by user's id",
+        "description": "Get PQRS's by user's id in the params",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/getByComplex/{idComplex}": {
+      "get": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Get PQRS's by complex's id",
+        "description": "Get PQRS's by complex's id in the params",
+        "parameters": [
+          {
+            "name": "idComplex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/close/{id}": {
+      "put": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Close a PQRS",
+        "description": "Close a PQRS by its id in the params",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/reopen/{pqrsId}": {
+      "put": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Reopen ",
+        "description": "Reopen an already close PQRS",
+        "parameters": [
+          {
+            "name": "pqrsId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/pqrs/getAnswers/{id}": {
+      "get": {
+        "tags": [
+          "PQRS"
+        ],
+        "summary": "Get PQRS's answers by PQRS's id",
+        "description": "Get PQRS's answers by PQRS's id in the params",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WeToResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/subscribe": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Subscribe to notifications",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Subscription created",
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/test/{userId}": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Send a test notification",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TestNotificationBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Test notification sent",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/unsubscribe/{userId}": {
+      "delete": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Unsubscribe from notifications",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription deleted",
+            "schema": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/errorResponse.400"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Zone": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "availableDays": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ]
+          }
+        },
+        "availableHours": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      }
+    },
+    "TestNotificationBody": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "body"
+      ]
+    },
+    "WeToResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "Reaction": {
+      "type": "object",
+      "properties": {
+        "reactionType": {
+          "type": "string",
+          "enum": [
+            "recommend",
+            "celebrate",
+            "support",
+            "love",
+            "interest",
+            "removed"
+          ],
+          "example": "recommend"
+        }
+      },
+      "required": [
+        "reactionType"
+      ]
+    },
+    "errorResponse.401": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": 401
+        },
+        "message": {
+          "type": "string",
+          "example": "Authentication failed or user lacks proper authorization."
+        }
+      }
+    },
+    "errorResponse.403": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": 403
+        },
+        "message": {
+          "type": "string",
+          "example": "You do not have permission to access this resource."
+        }
+      }
+    },
+    "errorResponse.404": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "404"
+        },
+        "message": {
+          "type": "string",
+          "example": "The requested resource could not be found on the server."
+        }
+      }
+    },
+    "errorResponse.500": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": 500
+        },
+        "message": {
+          "type": "string",
+          "example": "An unexpected error occurred on the server. Please try again later."
+        }
+      }
+    },
+    "Subscription": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "expirationTime": {
+          "type": "number"
+        },
+        "keys": {
+          "type": "object",
+          "properties": {
+            "p256dh": {
+              "type": "string"
+            },
+            "auth": {
+              "type": "string"
+            }
+          }
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userComplex": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "endpoint",
+        "keys",
+        "userId",
+        "userComplex"
+      ]
+    },
+    "errorResponse.400": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Pet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fido"
+        },
+        "type": {
+          "type": "string",
+          "example": "Dog"
+        },
+        "breed": {
+          "type": "string",
+          "example": "Labrador"
+        },
+        "color": {
+          "type": "string",
+          "example": "Yellow"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "breed",
+        "color"
+      ]
+    },
+    "Vehicle": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string",
+          "example": "Toyota Corolla"
+        },
+        "plate": {
+          "type": "string",
+          "example": "ABC123"
+        },
+        "color": {
+          "type": "string",
+          "example": "Blue"
+        },
+        "year": {
+          "type": "string",
+          "example": "2020"
+        }
+      },
+      "required": [
+        "model",
+        "plate",
+        "color",
+        "year"
+      ]
+    },
+    "Directory": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "60c72b2f9b1d8b3a4c8e4d2a"
+        },
+        "complexId": {
+          "type": "string",
+          "example": "60c72b2f9b1d8b3a4c8e4d2b"
+        },
+        "service": {
+          "type": "string",
+          "example": "Plumbing"
+        },
+        "location": {
+          "type": "string",
+          "example": "near the supermarket"
+        },
+        "phone": {
+          "type": "string",
+          "example": "123-456-7890"
+        },
+        "hasWhatsApp": {
+          "type": "boolean",
+          "example": true
+        },
+        "whatsAppNumber": {
+          "type": "string",
+          "example": "123-456-7890"
+        }
+      },
+      "required": [
+        "userId",
+        "complexId",
+        "service",
+        "phone",
+        "hasWhatsApp"
+      ]
+    }
+  }
+}
